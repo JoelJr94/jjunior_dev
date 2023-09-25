@@ -6,11 +6,21 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag "style", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "turbo", type: "module" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "navbar/topnavbar" %>
+
+    <main class="container">
+      <%= render "layouts/flash_messages" %>
+      
+      <%= yield %>
+    </main>
+
+    <%= render "navbar/footer" %>
   </body>
 </html>

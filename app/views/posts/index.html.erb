@@ -1,0 +1,20 @@
+<%= render_if @highlights[0].present?, "posts/longer_featured", post: @highlights[0] %>
+
+<div class="row mb-2">
+  <%= render_if @highlights[1].present?, "posts/medium_featured", post: @highlights[1] %>
+  <%= render_if @highlights[2].present?, "posts/medium_featured", post: @highlights[2] %>
+</div>
+
+<div class="row g-5">
+  <div class="col-md-8">
+    <h3 class="pb-4 mb-4 fst-italic border-bottom merriweather">
+      Posts
+    </h3>
+
+    <%= link_to "New post", new_post_path, class:"btn btn-success" %>
+
+    <%= render @posts %>
+  </div>
+
+  <%= render "posts/right_side" %>
+</div>

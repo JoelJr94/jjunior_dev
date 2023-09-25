@@ -1,0 +1,9 @@
+<div class="container-fluid col-8">
+  <h1 class="text-center">New post</h1>
+
+  <%= render "form", post: @post %>
+
+  <div class="text-center mt-3">
+    <%= link_to "Back to posts", posts_path %>
+  </div>
+</div>
