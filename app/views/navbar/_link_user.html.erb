@@ -1,17 +1,18 @@
 <% if user_signed_in? %>
-  <div class="dropdown text-end">
-    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="https://avatars.githubusercontent.com/u/86368979?v=4" alt="mdo" width="36" height="36" class="rounded-circle">
-    </a>
-    <ul class="dropdown-menu text-small">
-      <li><a class="dropdown-item" href="#">New project...</a></li>
-      <li><a class="dropdown-item" href="#">Settings</a></li>
-      <li><a class="dropdown-item" href="#">Profile</a></li>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      <%= @user_full_name %>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><%= link_to "New post", new_post_path, class:"dropdown-item" %></li>
+      <li><%= link_to "Edit User", edit_user_registration_path, class:"dropdown-item" %></li>
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Sign out</a></li>
+      <li><%= link_to "Sign out", destroy_user_session_path, data: {
+                                                                     turbo_method: :delete},
+                                                                     class:"dropdown-item" %></li>
     </ul>
   </div>
 <% else %>
-  <button type="button" class="btn btn-outline-secondary me-2">Login</button>
-  <button type="button" class="btn btn-secondary">Sign-up</button>
+  <%= link_to "Sign in", new_user_session_path, class:"btn btn-outline-secondary me-2" %>
+  <%= link_to "Sign up", new_user_registration_path, class:"btn btn-secondary" %>
 <% end %>
