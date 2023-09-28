@@ -5,7 +5,7 @@
       
       <h3 class="mb-0 fst-italic merriweather"><%= post.title %></h3>
       
-      <div class="mb-1 text-body-secondary">Nov 12, 2023 by Cyro</div>
+      <div class="mb-1 text-body-secondary"><%= format_date(post.created_at) %> by <%= truncate(full_name(post.user), length: 15) %> </div>
       
       <p class="card-text mb-auto"><%= post.body.truncate(150) %></p>
       

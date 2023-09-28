@@ -1,11 +1,20 @@
-<%= render @post %>
+<div class="container-fluid col-12 vh-100 mb-4">
+  <article class="blog-post border-bottom mt-4">
+    <h2 class="display-6 link-body-emphasis mb-1 fst-italic merriweather text-center"><%= @post.title %></h2>
+    <p class="blog-post-meta text-center"><%= format_date(@post.created_at) %> by <%= truncate(full_name(@post.user), length: 15) %></p>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
+    <p class="pt_serif">
+      <%= @post.body %>
+    </p>
+</article>
 
-  <%= link_to "Destroy this post", @post, data:{
-                                                turbo_method: :delete,
-                                                turbo_confirm: "Are you sure?"
-                                                } %>
+  <div>
+    <%= link_to "Edit this post", edit_post_path(@post) %> |
+    <%= link_to "Back to posts", root_path %>
+
+    <%= link_to "Destroy this post", @post, data:{
+                                                  turbo_method: :delete,
+                                                  turbo_confirm: "Are you sure?"
+                                                  } %>
+  </div>
 </div>
