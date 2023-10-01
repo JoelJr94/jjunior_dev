@@ -1,0 +1,12 @@
+<tr>
+  <td>
+    <%= category.name %>
+  </td>
+  <td class="text-center">
+    <%= link_to "Edit", edit_category_path(category), class:"btn btn-primary btn-sm" %>
+    <%= link_to "Destroy", category, data:{
+                                           turbo_method: :delete,
+                                           turbo_confirm: "Are you sure?"},
+                                           class:"btn btn-danger btn-sm" %>
+  </td>
+</tr>
