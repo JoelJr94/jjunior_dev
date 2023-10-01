@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ edit update destroy ]
 
   def index
-    @categories = Category.all
+    @categories = Category.sorted
   end
 
   def new
@@ -32,9 +32,11 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.destroy
-
-    redirect_to categories_url, notice: "Category was successfully destroyed."
+    if @category.destroy
+      redirect_to categories_url, notice: "Category was successfully destroyed."
+    else
+      redirect_to categories_url, alert: @category.errors.messages[:base][0]
+    end
   end
 
   private
