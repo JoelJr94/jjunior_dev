@@ -8,10 +8,12 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
+    authorize @category
   end
 
   def create
     @category = Category.new(category_params)
+    authorize @category
 
     if @category.save
       redirect_to categories_url, notice: "Category was successfully created."
@@ -42,6 +44,7 @@ class CategoriesController < ApplicationController
   private
     def set_category
       @category = Category.find(params[:id])
+      authorize @category
     end
 
     def category_params

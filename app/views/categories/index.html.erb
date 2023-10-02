@@ -1,7 +1,7 @@
 <div class="container-fluid col-md-6 vh-100 mb-4">
   <h1 class="text-center mb-5">Categories</h1>
 
-  <%= link_to "New category", new_category_path, class:"btn btn-success mb-4" %>
+  <%= link_to "New category", new_category_path, class:"btn btn-success mb-4" if policy(:category).new? %>
   
   <div>
     <table class="table table-striped table-bordered table-hover">
