@@ -76,3 +76,5 @@ end
 
 gem "simple_form"
 gem "devise", "~> 4.9"
+
+gem "pundit", "~> 2.3"

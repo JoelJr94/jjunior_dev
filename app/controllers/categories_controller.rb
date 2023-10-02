@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ edit update destroy ]
 
   def index
-    @categories = Category.sorted
+    @categories = policy_scope(Category.sorted)
   end
 
   def new

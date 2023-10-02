@@ -11,7 +11,7 @@
       Posts
     </h3>
 
-    <%= link_to "New post", new_post_path, class:"btn btn-success" %>
+    <%= link_to "New post", new_post_path, class:"btn btn-success" if user_signed_in? %>
 
     <%= render @posts %>
   </div>

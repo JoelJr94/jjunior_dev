@@ -1,8 +1,12 @@
 <article class="blog-post border-bottom mt-4">
-  <h2 class="display-6 link-body-emphasis mb-1 fst-italic merriweather"><%= post.title %></h2>
-  <p class="blog-post-meta"><%= format_date(post.created_at) %> by <%= truncate(full_name(post.user), length: 15) %></p>
+  <div class="mb-4">
+    <h2 class="display-6 link-body-emphasis mb-1 fst-italic merriweather"><%= post.title %></h2>
+    <p class="blog-post-meta"><%= format_date(post.created_at) %> by <%= truncate(full_name(post.user), length: 15) %></p>
 
-  <p class="pt_serif">
-    <%= post.body.truncate(150) %>
-  </p>
+    <p class="pt_serif">
+      <%= post.body.truncate(150) %>
+    </p>
+    
+    <%= link_to "Continue reading...", post %>
+  </div>
 </article>
