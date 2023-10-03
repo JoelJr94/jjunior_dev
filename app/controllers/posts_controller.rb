@@ -3,12 +3,18 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
   def index
-    @highlights = Post.desc_order
+    category = Category.find_by_name(params[:category]) if params[:category].present?
+
+    @highlights = Post.filter_by_category(category)
+                      .desc_order
                       .first(3)
 
-    @posts = Post.without_highlights(highlight_ids)
+    @posts = Post.filter_by_category(category)
+                 .without_highlights(highlight_ids)
                  .desc_order
                  .page(params[:page])
+
+    @categories = Category.sorted
   end
 
   def show

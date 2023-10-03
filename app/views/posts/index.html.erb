@@ -21,3 +21,13 @@
 
   <%= render "posts/right_side" %>
 </div>
+
+<%= content_for :category_filter do %>
+  <div class="nac-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between">
+      <% @categories.each do |category| %>
+        <%= link_to category.name, root_path(category: category.name), class: "p-2 link-secondary #{'category-active' if category.name.to_s == params[:category]}" %>
+      <% end %>
+    </nav>
+  </div>
+<% end %>
