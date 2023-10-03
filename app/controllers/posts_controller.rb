@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
     @posts = Post.without_highlights(highlight_ids)
                  .desc_order
+                 .page(params[:page])
   end
 
   def show
