@@ -14,7 +14,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def update?
-    user&.id == record.user.id || user&.admin? || user.has_role?(:moderator)
+    user&.id == record.user.id || user&.admin? || user&.has_role?(:moderator)
   end
 
   def destroy?

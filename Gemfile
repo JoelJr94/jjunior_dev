@@ -79,3 +79,4 @@ gem "devise", "~> 4.9"
 gem "pundit", "~> 2.3"
 gem 'rolify', '~> 6.0', '>= 6.0.1'
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
+gem "groupdate", "~> 6.4"

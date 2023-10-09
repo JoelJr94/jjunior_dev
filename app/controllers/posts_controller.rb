@@ -1,20 +1,23 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_categories, only: %i[ index new create edit update ]
 
   def index
     category = Category.find_by_name(params[:category]) if params[:category].present?
 
     @highlights = Post.filter_by_category(category)
+                      .filter_by_archives(params[:month_year])
                       .desc_order
                       .first(3)
 
     @posts = Post.filter_by_category(category)
+                 .filter_by_archives(params[:month_year])
                  .without_highlights(highlight_ids)
                  .desc_order
                  .page(params[:page])
 
-    @categories = Category.sorted
+    @archives = Post.group_by_month(:created_at, format: "%B %Y").count
   end
 
   def show
@@ -63,5 +66,9 @@ class PostsController < ApplicationController
 
     def highlight_ids
       @highlights.pluck(:id)
+    end
+
+    def set_categories
+      @categories = Category.sorted
     end
 end
