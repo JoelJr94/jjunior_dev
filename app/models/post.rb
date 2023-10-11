@@ -2,6 +2,8 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
+  has_many :comments, dependent: :destroy
+
   paginates_per 5
 
   validates :title, presence: true, length: {minimum: 3}

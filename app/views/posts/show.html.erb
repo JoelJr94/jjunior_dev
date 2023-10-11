@@ -1,4 +1,4 @@
-<div class="container-fluid col-12 vh-100 mb-4">
+<div class="container-fluid col-12 mb-4">
   <article class="blog-post border-bottom mt-4">
     <h2 class="display-6 link-body-emphasis mb-1 fst-italic merriweather text-center"><%= @post.title %></h2>
     <p class="blog-post-meta text-center"><%= format_date(@post.created_at) %> by <%= truncate(full_name(@post.user), length: 15) %></p>
@@ -19,4 +19,14 @@
   <div class="text-center mb-4">
     <%= link_to "Back to posts", root_path, class:"btn btn-link" %>
   </div>
+
+  <h2 class="mt-3 mb-4">Comments:</h2>
+  <%= render @post.comments %>
+
+  <h2>Add a Comment:</h2>
+  <% if policy(:comment).create? %>
+    <%= render "comments/form" %>
+  <% else %>
+    Please, login to create a comment.
+  <% end %>
 </div>

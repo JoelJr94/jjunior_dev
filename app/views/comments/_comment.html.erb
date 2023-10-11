@@ -1,0 +1,11 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title"><%= format_date(comment.created_at) %></h5>
+    <h6 class="card-subtitle mb-2 text-muted">Commenter: <%= truncate(full_name(comment.user), length: 15) %></h6>
+    <p class="card-text"><%= comment.body %></p>
+    <%= link_to "Destroy", post_comment_path(@post, comment), data:{
+                                                                    turbo_method: :delete,
+                                                                    turbo_confirm: "Are you sure?"
+                                                                    }, class:"btn btn-danger" if policy(comment).destroy? %>
+  </div>
+</div>

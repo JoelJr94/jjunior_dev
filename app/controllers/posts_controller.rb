@@ -21,6 +21,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.includes(comments: :user).find(params[:id])
+    authorize @post
   end
 
   def new
